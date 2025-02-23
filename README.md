@@ -22,9 +22,27 @@ einops
 
 ![avatar](/framework.png)
 
-The training and inference command is:
+The command for self-supervised pre-training is:
 
-```python main.py --c configs/MTARSI_SwinT.yaml```
+```PROJ_PATH=your_esvit_project_path
+DATA_PATH=$PROJ_PATH/project/data/imagenet
+
+OUT_PATH=$PROJ_PATH/output/esvit_exp/ssl/swin_tiny_imagenet/
+python -m torch.distributed.launch --nproc_per_node=16 main_esvit.py --arch swin_tiny --data_path $DATA_PATH/train --output_dir $OUT_PATH --batch_size_per_gpu 32 --epochs 300 --teacher_temp 0.07 --warmup_epochs 10 --warmup_teacher_temp_epochs 30 --norm_last_layer false --use_dense_prediction True --cfg experiments/imagenet/swin/swin_tiny_patch4_window7_224.yaml ```
+
+Please remember to change the file folder to your own in the ```.yaml``` file.
+
+The command for inference is:
+
+```PROJ_PATH=your_esvit_project_path
+DATA_PATH=$PROJ_PATH/project/data/imagenet
+
+OUT_PATH=$PROJ_PATH/exp_output/esvit_exp/swin/swin_tiny/bl_lr0.0005_gpu16_bs32_dense_multicrop_epoch300
+CKPT_PATH=$PROJ_PATH/exp_output/esvit_exp/swin/swin_tiny/bl_lr0.0005_gpu16_bs32_dense_multicrop_epoch300/checkpoint.pth
+
+python -m torch.distributed.launch --nproc_per_node=4 eval_linear.py --data_path $DATA_PATH --output_dir $OUT_PATH/lincls/epoch0300 --pretrained_weights $CKPT_PATH --checkpoint_key teacher --batch_size_per_gpu 256 --arch swin_tiny --cfg experiments/imagenet/swin/swin_tiny_patch4_window7_224.yaml --n_last_blocks 4 --num_labels 1000 MODEL.NUM_CLASSES 0
+
+python -m torch.distributed.launch --nproc_per_node=4 eval_knn.py --data_path $DATA_PATH --dump_features $OUT_PATH/features/epoch0300 --pretrained_weights $CKPT_PATH --checkpoint_key teacher --batch_size_per_gpu 256 --arch swin_tiny --cfg experiments/imagenet/swin/swin_tiny_patch4_window7_224.yaml MODEL.NUM_CLASSES 0 ```
 
 Please remember to change the file folder to your own in the ```.yaml``` file.
 
