@@ -6,16 +6,18 @@ This is the official implementation of our work entitled as ```Cross-level Multi
 
 To set up the environment, please install the following packages:
 ```
-matplotlib==3.3.1
-numpy==1.20.2
-opencv-python==4.5.2.54
-pillow==8.2.0
-pip==21.1.3
-seaborn==0.11.0
-timm==0.5.4
-torch==1.9.0
-torchvision==0.10.0
-wandb==0.12.4
+opencv-python
+pyyaml
+json_tricks
+tensorboardX==2.0
+yacs
+pycocotools
+scikit-learn
+tensorwatch
+pandas
+timm==0.3.2
+numpy==1.19.3
+einops
 ```
 
 ![avatar](/framework.png)
