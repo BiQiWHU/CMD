@@ -61,7 +61,7 @@ If you find this work useful for your research, please cite our work as follows:
 ```BibTeX
 @article{bi2025cross,
   title={Cross-level Multi-instance Distillation for Self-supervised Fine-grained Visual Categorization},
-  author={Bi, Qi and Wei, Ji and Yi, Jingjun and Zhan, Haolan and Xia, Gui-Song},
+  author={Bi, Qi and Ji, Wei and Yi, Jingjun and Zhan, Haolan and Xia, Gui-Song},
   journal={IEEE Transactions on Image Processing},
   year={2025}
 }
