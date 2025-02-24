@@ -50,6 +50,10 @@ python -m torch.distributed.launch --nproc_per_node=4 eval_knn.py --data_path $D
 
 Please remember to change the file folder to your own in the ```.yaml``` file.
 
+## Acknowledgement
+
+The development of ```CMD``` is based on the source code from ```EsViT```, with the code link [https://github.com/microsoft/esvit]. We sincerely appreciate the authors of ```Efficient Self-supervised Vision Transformers for Representation Learning``` to advance self-supervised representation learning. 
+
 ## Citation
 
 If you find this work useful for your research, please cite our work as follows:
