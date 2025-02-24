@@ -55,9 +55,9 @@ Please remember to change the file folder to your own in the ```.yaml``` file.
 If you find this work useful for your research, please cite our work as follows:
 
 ```BibTeX
-@article{bi2025universal,
-  title={Universal Fine-grained Visual Categorization by Concept Guided Learning},
-  author={Bi, Qi and Yi, Jingjun and Zhan, Haolan and Wei, Ji and Xia, Gui-Song},
+@article{bi2025cross,
+  title={Cross-level Multi-instance Distillation for Self-supervised Fine-grained Visual Categorization},
+  author={Bi, Qi and Wei, Ji and Yi, Jingjun and Zhan, Haolan and Xia, Gui-Song},
   journal={IEEE Transactions on Image Processing},
   year={2025}
 }
